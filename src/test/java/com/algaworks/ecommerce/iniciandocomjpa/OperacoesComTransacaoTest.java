@@ -10,6 +10,20 @@ import java.math.BigDecimal;
 public class OperacoesComTransacaoTest extends EntityManagerTest {
 
     @Test
+    public void removerObjeto() {
+        Produto produto = entityManager.find(Produto.class, 3);
+
+        entityManager.getTransaction().begin();
+        entityManager.remove(produto); // Recebe uma Entidade
+        entityManager.getTransaction().commit();
+
+//        entityManager.clear(); Não é necessário na asserção para operação de remoção.
+
+        Produto produtoVerificacao = entityManager.find(Produto.class, 3);
+        Assert.assertNull(produtoVerificacao);
+    }
+
+    @Test
     public void inserirOPrimeiroObjeto() {
         Produto produto = new Produto();
 
@@ -19,10 +33,10 @@ public class OperacoesComTransacaoTest extends EntityManagerTest {
         produto.setPreco(new BigDecimal(5000));
 
         entityManager.getTransaction().begin();
-        entityManager.persist(produto); // Inserção do Produto
-        entityManager.getTransaction().commit(); // Confirmação da Transação
+        entityManager.persist(produto);
+        entityManager.getTransaction().commit();
 
-        entityManager.clear(); // Vai limpar a memoria do EntityManager (não é comum)
+        entityManager.clear();
 
         Produto produtoVerificacao = entityManager.find(Produto.class, produto.getId());
         Assert.assertNotNull(produtoVerificacao);
