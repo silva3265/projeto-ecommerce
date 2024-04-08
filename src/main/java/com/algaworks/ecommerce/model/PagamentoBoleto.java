@@ -13,14 +13,14 @@ import javax.persistence.Table;
 @Setter
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Entity
-@Table(name = "pagamento_boleto") // Nome da Tabela, seguindo padrão "pagamento_boleto"
+@Table(name = "pagamento_boleto")
 public class PagamentoBoleto {
 
     @EqualsAndHashCode.Include
     @Id
     private Integer id;
 
-    @Column(name = "pedido_id") // Vai criar a coluna com esse nome "pedido_id"
+    @Column(name = "pedido_id")
     private Integer pedidoId;
 
     private StatusPagamento status;
