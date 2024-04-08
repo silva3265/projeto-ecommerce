@@ -19,6 +19,6 @@ public class Cliente {
 
     private String nome;
 
-    @Enumerated(EnumType.STRING) // Vai gerar uma string referente ao ENUM (ao inves de 0 vaia aparecer o nome: Ex: de 0 aparecer MASCULINO)
+    @Enumerated(EnumType.STRING)
     private SexoCliente sexo;
 }

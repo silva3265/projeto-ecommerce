@@ -15,21 +15,25 @@ import java.time.LocalDateTime;
 @Table(name = "pedido")
 public class Pedido {
 
-    @EqualsAndHashCode.Include
-    @Id
-    private Integer id;
+	@EqualsAndHashCode.Include
+	@Id
+	private Integer id;
 
-    @Column(name = "data_pedido")
-    private LocalDateTime dataPedido;
+	@Column(name = "data_pedido")
+	private LocalDateTime dataPedido;
 
-    @Column(name = "data_conclusao")
-    private LocalDateTime dataConclusao;
+	@Column(name = "data_conclusao")
+	private LocalDateTime dataConclusao;
 
-    @Column(name = "nota_fiscal_id")
-    private Integer notaFiscalId;
+	@Column(name = "nota_fiscal_id")
+	private Integer notaFiscalId;
 
-    private BigDecimal total;
+	private BigDecimal total;
 
-    @Enumerated(EnumType.STRING)
-    private StatusPedido status;
+	@Enumerated(EnumType.STRING)
+	private StatusPedido status;
+
+	@Embedded // Objeto 'imbutivel'
+	private EnderecoEntregaPedido enderecoEntrega; // as colunas dessa classe 'EnderecoEntregaPedido', agora fazem parte
+													// da tabela 'Pedido'
 }
