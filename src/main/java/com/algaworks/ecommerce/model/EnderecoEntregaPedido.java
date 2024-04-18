@@ -8,7 +8,7 @@ import javax.persistence.Embeddable;
 
 @Getter
 @Setter
-@Embeddable // Vai embutir tipos que nao são entidades dentro de uma Entidade
+@Embeddable
 public class EnderecoEntregaPedido {
 
     private String cep;
