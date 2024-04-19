@@ -13,14 +13,15 @@ import javax.persistence.*;
 @Table(name = "categoria")
 public class Categoria {
 
-    @EqualsAndHashCode.Include
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq")
-    @SequenceGenerator(name = "seq", sequenceName = "sequencias_chave_primaria")
-    private Integer id;
+	@EqualsAndHashCode.Include
+	@Id
+	@GeneratedValue(strategy = GenerationType.TABLE, generator = "tabela") // Vai gerenciar as primary keys atraves
+																			// dessa tabela
+	@TableGenerator(name = "tabela", table = "hibernate_sequence", pkColumnName = "sequence_name", pkColumnValue = "categoria", valueColumnName = "next_val", initialValue = 0, allocationSize = 50)
+	private Integer id;
 
-    private String nome;
+	private String nome;
 
-    @Column(name = "categoria_pai_id")
-    private Integer categoriaPaiId;
+	@Column(name = "categoria_pai_id")
+	private Integer categoriaPaiId;
 }
