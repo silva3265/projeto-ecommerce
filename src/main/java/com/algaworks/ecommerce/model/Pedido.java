@@ -20,6 +20,10 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @ManyToOne // Muitos pra um
+    @JoinColumn(name = "cliente_id") // nao é obrigado a criar o nome via @JoinColumn, o @ManyToOne ja cria por baixo dos Panos
+    private Cliente cliente;
+
     @Column(name = "data_pedido")
     private LocalDateTime dataPedido;
 
